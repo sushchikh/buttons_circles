@@ -4,13 +4,20 @@ body{
 }
 
 .test{
-	background-color: lightgray;
-	width: 400px;
-	height: 200px;
+	background-color: gray;
+	width: 200px;
+	height: 40px;
 	margin: 100px auto;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0px 0px 30px lightgray;
+	box-shadow: 2px 2px 5px lightgray;
+	border-radius: 10px;
+	top: 0px;
+}
+
+.test:active{
+	top: 2px;
+	box-shadow: 0px 0px 10px lightgray;
 }
 
 .circle{
@@ -38,3 +45,8 @@ body{
 
 	};
 };
+
+svg{
+	width: 400px;
+	height: 200px;
+}
