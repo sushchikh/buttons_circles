@@ -39,24 +39,23 @@ var circle = document.createElement('div'); // создаем элемент
 
 
 cirleContainer.onclick = function(event){
-/*	x = event.offsetX;  // получаем координаты	
-	y = event.offsetY; 
-*/
 
 	x = event.offsetX==undefined?event.layerX:event.offsetX;
 	y = event.offsetY==undefined?event.layerY:event.offsetY;
-	console.log(x, y);
+	// console.log(x, y);
 
-	cirleContainer.appendChild(circle); // запихиваем его в родителя
+	cirleContainer.insertBefore(circle, cirleContainer.firstChild); // запихиваем его в родителя
 	circle.classList.add('circle'); // задаем ему класс "круг"
-	circle.style.top = y + "px";
+	circle.style.top = y + "px"; //позиционируем элемент по нашим координатам
 	circle.style.left = x + "px";
 	
-	setTimeout(removeCircle, 500);
+	setTimeout(removeCircle, 500); // удаляем элемент с задержкой по таймеру, равному длинне анимации
 	function removeCircle(){
 		circle.parentNode.removeChild(circle);
 	};
 	
 };
 
+var styles = getComputedStyle(circle);
+console.log(styles.animationDuration);
 
