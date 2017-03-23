@@ -23,30 +23,25 @@ body{
 .circle{
 	position: absolute;
 	border-radius: 50%;
-	background-color: gray;
-	/* animation: circleGo 1.5s; */
+	background-color: #D32F2F;
+	animation: circleGo .5s;
 	will-change: animation;
-	width: 20px;
-	height: 20px;
+	width: 0px;
+	height: 0px;
 	animation-fill-mode: forwards;
 	animation-direction: normal;
 	display: inline-block;
-
 }
 
 @keyframes circleGo{
 
 	100% {
 			/* transform: scale(100); */
-			width: 100px;
-			height: 100px;
-			transform: translate(-55px, -55px)
+			width: 400px;
+			height: 400px;
+			transform: translate(-200px, -200px)
 			/* opacity: 0; */
 
 	};
 };
 
-svg{
-	width: 400px;
-	height: 200px;
-}
