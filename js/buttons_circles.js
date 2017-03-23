@@ -1,55 +1,62 @@
-// "use strict"
-// var circlesTrigger = document.getElementById('circles_trigger');
-// var circle = document.createElement('div');
-// circle.classList.add('circle');
+// вариант через SVG, не могу возобновить таймер (выполняется один раз)
 
-
-// document.getElementById('circles_trigger').onclick = function(e) {
-//   var x = e.offsetX==undefined?e.layerX:e.offsetX;
-//   var y = e.offsetY==undefined?e.layerY:e.offsetY;
-  
-//   setInterval(grow,17);
-//   function grow(){
-//   	circle.style.width = x++ + "px";
-//   	circle.style.height = x++ + "px";
-//   	circle.style.opacity = x--;
-
-//   };
-
-//   // circle.style.left= x -10 + "px";
-//   // circle.style.top = y -10 + "px";
-//   circlesTrigger.appendChild(circle);
-//   console.log(x +'x'+ y);
-
-
-// };
-
+/*
 var x, y;
 var cirleContainer = document.getElementById('cirles_container');
 var cirlce = document.querySelector('circle');
 
-cirleContainer.onmousemove = function(event){
-  x = event.offsetX;
-  y = event.offsetY; 
-  // console.log(event);
-  cirlce.setAttribute('fill','#D32F2F');
-  cirlce.setAttribute('cx', x);
-  cirlce.setAttribute('cy', y);
-
-};
 var i = 1;
-cirleContainer.onmousedown = function(){
-  setInterval(grow,2);
-  function grow(){
-    cirlce.setAttribute('r', i++*2);
+cirleContainer.onmousedown = function(event){
+
+  x = event.offsetX;  // получаем координаты	
+  y = event.offsetY; 
+ 
+  cirlce.setAttribute('fill','#D32F2F'); //цвет
+  cirlce.setAttribute('cx', x); // х-координата
+  cirlce.setAttribute('cy', y); //y-координата
+	
+  var timerId = setInterval(grow,2); //
+  
+  function grow(){ 
+	if(i < 100){  
+		cirlce.setAttribute('r', i++*6);
+		console.log(timerId);
+	}
+	else {
+		cirlce.setAttribute('r', 0);
+		clearTimeout(timerId);
+		console.log(timerId);
+	};
   };
 };
+*/
+
+// вариант через создание элемента с классом.
+
+var x, y;
+var cirleContainer = document.getElementById('cirles_container'); // ловим родителя
+var circle = document.createElement('div'); // создаем элемент
 
 
+cirleContainer.onclick = function(event){
+/*	x = event.offsetX;  // получаем координаты	
+	y = event.offsetY; 
+*/
 
-// рисование
+	x = event.offsetX==undefined?event.layerX:event.offsetX;
+	y = event.offsetY==undefined?event.layerY:event.offsetY;
+	console.log(x, y);
 
-
-
+	cirleContainer.appendChild(circle); // запихиваем его в родителя
+	circle.classList.add('circle'); // задаем ему класс "круг"
+	circle.style.top = y + "px";
+	circle.style.left = x + "px";
+	
+	setTimeout(removeCircle, 500);
+	function removeCircle(){
+		circle.parentNode.removeChild(circle);
+	};
+	
+};
 
 
