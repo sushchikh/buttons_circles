@@ -32,7 +32,7 @@ cirleContainer.onmousemove = function(event){
   x = event.offsetX;
   y = event.offsetY; 
   // console.log(event);
-  cirlce.setAttribute('fill','lightgray');
+  cirlce.setAttribute('fill','#D32F2F');
   cirlce.setAttribute('cx', x);
   cirlce.setAttribute('cy', y);
 
